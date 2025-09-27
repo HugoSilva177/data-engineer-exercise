@@ -1,0 +1,83 @@
+source_system: localsystem
+dialect:
+  delimiter: ","
+  encoding: "utf-8"
+  header_case: preserve
+datetime_formats:
+  - "%m/%d/%y"
+  - "%m/%d/%Y"
+  - "%Y-%m-%d"
+column_map:
+  company:
+    - "Name"
+    - "Company"
+    - "Operation Name"
+  facility_type: 
+    - "Credential Type"
+    - "Type License"
+    - "Type"
+  license_number: 
+    - "Credential Number"
+    - "Facility ID"
+  license_status: 
+    - "Status"
+  certificate_expiration_date: 
+    - "Expiration Date"
+  license_issued: 
+    - "First Issue Date"
+    - "License Monitoring Since"
+    - "Issue Date"
+  address1: 
+    - "Address"
+    - "Address1"
+  address2: 
+    - "Address2"
+  city: 
+    - "City"
+  state: 
+    - "State"
+  zip: 
+    - "Zip"
+  county: 
+    - "County"
+  phone:
+    - "Phone"
+  email: 
+    - "Email"
+    - "Email Address"
+  primary_contact_name: 
+    - "Primary Contact Name"
+    - "Primary Caregiver"
+  title: 
+    - "Primary Contact Role"
+    - "Primary Caregiver"
+  capacity: 
+    - "Total Cap"
+    - "Capacity"
+  ages_accepted:
+    - "Ages Accepted"
+    - "AA2"
+    - "AA3"
+    - "AA4"
+  infant_age: 
+    - "Infant"
+  toddler_age: 
+    - "Toddler"
+  preschool_age: 
+    - "Preschool"
+  school_age: 
+    - "School"
+  accepts_financial_aid: 
+    - "Accepts Subsidy"
+  provider_id: 
+    - "Credential Number"
+    - "Operation"
+  schedule: 
+    - "Mon"
+    - "Tues"
+    - "Wed"
+    - "Thurs"
+    - "Friday"
+    - "Saturday"
+    - "Sunday"
+

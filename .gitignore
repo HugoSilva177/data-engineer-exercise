@@ -1,0 +1,5 @@
+*.ipynb
+venv/
+duckdb/*.csv
+duckdb/exports/*.csv
+.ipynb_checkpoints

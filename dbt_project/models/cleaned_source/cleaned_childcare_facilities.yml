@@ -1,0 +1,94 @@
+version: 2
+
+models:
+  - name: cleaned_childcare_facilities
+    description: "Cleaned and standardized childcare facilities data from the raw source table"
+    columns:
+      - name: provider_id
+        description: "Unique identifier for the childcare provider"
+
+      - name: company
+        description: "Name of the childcare facility or company"
+        tests:
+          - not_null
+          - unique
+
+      - name: phone
+        description: "Contact phone number (normalized to digits only)"
+        tests:
+          - not_null:
+              severity: error
+          - relationships:
+              to: ref('cleaned_childcare_facilities')
+              field: phone
+              where: "phone IS NOT NULL"
+
+      - name: address1
+        description: "Primary address line"
+        tests:
+          - not_null:
+              severity: error
+
+      - name: facility_type
+        description: "Type of childcare facility"
+
+      - name: license_number
+        description: "License or credential number"
+
+      - name: license_status
+        description: "Current status of the license"
+
+      - name: license_issued
+        description: "Date when the license was first issued"
+
+      - name: certificate_expiration_date
+        description: "Date when the certificate expires"
+
+      - name: address2
+        description: "Secondary address line"
+
+      - name: city
+        description: "City where the facility is located"
+
+      - name: state
+        description: "State where the facility is located"
+
+      - name: zip
+        description: "ZIP code of the facility"
+
+      - name: county
+        description: "County where the facility is located"
+
+      - name: email
+        description: "Contact email address"
+
+      - name: primary_contact_name
+        description: "Name of the primary contact person"
+
+      - name: title
+        description: "Title of the primary contact person"
+
+      - name: capacity
+        description: "Maximum capacity of the facility"
+
+      - name: ages_served
+        description: "Age groups served by the facility"
+
+      - name: accepts_financial_aid
+        description: "Whether the facility accepts financial aid"
+
+      - name: schedule
+        description: "Operating schedule of the facility"
+
+      - name: etl_timestamp
+        description: "Timestamp when the record was processed"
+        tests:
+          - not_null
+
+    tests:
+      - unique:
+          column_name: "phone || '|' || address1"
+          name: unique_phone_address_combination
+      - dbt_utils.expression_is_true:
+          expression: "phone IS NOT NULL AND address1 IS NOT NULL"
+          name: phone_and_address_not_null
